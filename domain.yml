@@ -1,0 +1,76 @@
+intents:
+  - greet
+  - bye
+  - basic_tax_info_b
+  - wardtax_based_b
+  - taxfq_based_b
+  - propidtax_based_b
+  - ward_yes_b
+  - ward_no_b
+  - ward_owner_b
+  - ward_building_type_b
+
+
+actions:
+  - action_reset_form_slots
+  - action_wardowner_details
+
+
+slots:
+  propid:
+    type: unfeaturized
+  ward_no:
+    type: unfeaturized
+  ward_building_type:
+    type: unfeaturized
+
+forms:
+  - action_ward_form
+  - action_wardbtype_form
+  - action_propid_form
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+  
+  utter_intro_buttons:
+  - text: Hi Iam geo bot 1.12. I can help you regarding the following
+    buttons: 
+      - title: "Taxation Details"
+        payload: "/basic_tax_info_b"
+
+      - title: "Developer support"
+        payload: "/dev_support_b"
+
+  utter_taxation_details_buttons:
+  - text: What information would you like to know?
+    buttons:
+      - title: "Tax based on Ward no"
+        payload: "/wardtax_based_b"
+      - title: "Tax related F&Q"
+        payload: "/taxfq_based_b"
+      - title: "Tax based on Property Id"
+        payload: "/propidtax_based_b"
+  
+  utter_ask_ward_no:
+  - text: Please enter ward number you are looking for (eg-24)
+
+  utter_ward_expand_buttons:
+  - text: I can also provide details rearding Tax payers in this ward.
+          Please click on the information you need
+    buttons:
+      - title: "Highest Tax paying Property/Owner"
+        payload: "/ward_owner_b"
+      
+      - title: "Tax information based on building type" 
+        payload: "/ward_building_type_b"
+  
+  utter_ask_ward_building_type:
+  - text: Please type the building type to know the total tax collected from it (eg - commercial)
+
+  utter_ask_propid:
+  - text: Please type the property id of property you are looking for (eg - 2VB-K32-KNR-34-343P1)
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
